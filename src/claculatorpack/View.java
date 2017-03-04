@@ -15,6 +15,12 @@ public class View {
 	JPanel newPanel = new JPanel();
 	JPanel newPanel2 = new JPanel();
 	JLabel newLabel = new JLabel("Display");
+	JLabel label1 = new JLabel();
+	JLabel label2 = new JLabel();
+	JLabel label3 = new JLabel();
+	JLabel label4 = new JLabel();
+	JLabel label5 = new JLabel();
+
 	JButton button0 = new JButton("0");
 	JButton button1 = new JButton("1");
 	JButton button2 = new JButton("2");
@@ -37,8 +43,12 @@ public class View {
 		newPanel2.setLayout(new GridLayout(1, 2));
 		newFrame.add(newPanel);
 		newLabel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		newPanel.setLayout(new GridLayout(4, 4));
+		newPanel.setLayout(new GridLayout(5, 4));
 		newFrame.setVisible(true);
+		newPanel.add(label1);
+		newPanel.add(label2);
+		newPanel.add(label3);
+		newPanel.add(label4);
 		newPanel.add(button0);
 		newPanel.add(button1);
 		newPanel.add(button2);
@@ -60,4 +70,24 @@ public class View {
 
 	}
 
+	void setLabelOne(int label1) {
+		this.label1.setText("" + label1);
+	}
+
+	void setLabelTwo(String label2) {
+		this.label1.setText("" + label2);
+	}
+
+	void setLabelThree(int label3) {
+		this.label3.setText("" + label3);
+	}
+
+	void setLabelFour(int label4) {
+		this.label4.setText("" + label4);
+	}
+
+	void addListeners() {
+		button1.addActionListener(new Controller());
+		button2.addActionListener(new Controller());
+	}
 }
