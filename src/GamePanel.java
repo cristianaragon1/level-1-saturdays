@@ -11,6 +11,7 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer gametime = new Timer(1000 / 60, this);
+	Rocketship rocket = new Rocketship(225, 700, 50, 50);
 	Font titleFont;
 	Font titleFontTwo;
 	Font titleFontEnd;
@@ -63,7 +64,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void updateGameState() {
-
+		rocket.update();
 	}
 
 	public void updateEndState() {
@@ -83,8 +84,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void drawGameState(Graphics g) {
+
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 600, 900);
+		rocket.draw(g);
 	}
 
 	public void drawEndState(Graphics g) {
@@ -107,12 +110,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("key p");
+		System.out.println(e.getKeyCode());
 		if (e.getKeyCode() == 10) {
 			currentState += 1;
 			if (currentState > END_STATE) {
 				currentState = MENU_STATE;
+			} else if (currentState > MENU_STATE) {
+				currentState = GAME_STATE;
+			} else if (currentState > GAME_STATE) {
+				currentState = END_STATE;
 			}
+
+		}
+		if (e.getKeyCode() == 39) {
+			rocket.right();
 		}
 	}
 
