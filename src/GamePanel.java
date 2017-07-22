@@ -11,7 +11,8 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer gametime = new Timer(1000 / 60, this);
-	Rocketship rocket = new Rocketship(225, 700, 50, 50);
+	Rocketship rocket = new Rocketship(225, 700, 50, 50); 
+	ObjectManager manager = new ObjectManager();
 	Font titleFont;
 	Font titleFontTwo;
 	Font titleFontEnd;
@@ -27,6 +28,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFontTwo = new Font("Arial", Font.PLAIN, 28);
 		titleFontEnd = new Font("Arial", Font.PLAIN, 48);
 		titleFontEndTwo = new Font("Arial", Font.PLAIN, 28);
+		manager.addObject(rocket); 
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -64,7 +66,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void updateGameState() {
-		rocket.update();
+		manager.update();
+		manager.manageEnemies();
 	}
 
 	public void updateEndState() {
@@ -87,7 +90,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 600, 900);
-		rocket.draw(g);
+		manager.draw(g);
 	}
 
 	public void drawEndState(Graphics g) {
@@ -124,6 +127,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		}
 		if (e.getKeyCode() == 39) {
 			rocket.right();
+		}if (e.getKeyCode() == 37) {
+			rocket.left();
+		}if (e.getKeyCode() == 38) {
+			rocket.up();
+		}if (e.getKeyCode() == 40) {
+			rocket.down();
+		}if (e.getKeyCode() == 32) {
+			manager.addObject(new Projectile(rocket.x, rocket.y, 10, 10));
+
 		}
 	}
 

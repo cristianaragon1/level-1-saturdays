@@ -5,7 +5,8 @@ import javax.swing.plaf.SeparatorUI;
 
 public class LeagueInvaders {
 	JFrame mainFrame;
-	final int WIDTH = 500;
+	final static int WIDTH = 500;
+	//fix width, not supposed to be static
 	final int HEIGHT = 800;
 	
 	GamePanel panelgame = new GamePanel();

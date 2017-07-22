@@ -10,7 +10,7 @@ public class Rocketship extends GameObject {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.speed = 5;
+		this.speed = 20;
 	}
 
 	public void update() {
@@ -26,5 +26,14 @@ public class Rocketship extends GameObject {
 	public void right() {
 		// TODO Auto-generated method stub
 		x += speed;
+	}public void left() {
+		// TODO Auto-generated method stub
+		x -= speed;
+	}public void up() {
+		// TODO Auto-generated method stub
+		y -= speed;
+	}public void down() {
+		// TODO Auto-generated method stub
+		y += speed;
 	}
 }
