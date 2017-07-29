@@ -1,6 +1,7 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
-import com.sun.javafx.geom.Rectangle;
+
 
 public class GameObject {
 	int x;
@@ -9,14 +10,14 @@ public class GameObject {
 	int height;
 	Boolean isAlive = true;
 	Rectangle collisionBox;
+	public GameObject(){
+		collisionBox = new Rectangle(x, y, width, height);
+	}
 	public void update() {
-		
+		collisionBox.setBounds(x, y, width, height);
 	}
 
 	public void draw(Graphics g) {
 
-	}
-	public GameObject(){
-		collisionBox = new Rectangle();
 	}
 }
